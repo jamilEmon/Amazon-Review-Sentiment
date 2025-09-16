@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Force CPU
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # force CPU
 
 from flask import Flask, render_template, request
 from utils.inference import predict_text
@@ -22,5 +22,5 @@ def predict():
         return f"Prediction failed: {e}", 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Render sets $PORT automatically
+    port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
