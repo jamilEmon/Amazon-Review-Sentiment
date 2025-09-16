@@ -1,8 +1,6 @@
-import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # force CPU
-
 from flask import Flask, render_template, request
 from utils.inference import predict_text
+import os
 
 app = Flask(__name__)
 
