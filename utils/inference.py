@@ -14,18 +14,15 @@ def safe_load_joblib(file_name):
         print(f"Failed to load {file_name}: {e}")
         return None
 
+# Load only TF-IDF and Voting model
 tfidf = safe_load_joblib("tfidf_vectorizer.pkl")
 voting_model = safe_load_joblib("voting_model.pkl")
-stacked_meta_model = safe_load_joblib("stacked_meta_model.pkl")
 
 def predict_text(text):
     results = {}
     if tfidf and voting_model:
         X_tfidf = tfidf.transform([text])
         results["Voting"] = int(voting_model.predict(X_tfidf)[0])
-    if tfidf and stacked_meta_model:
-        X_tfidf = tfidf.transform([text])
-        results["Stacked"] = int(stacked_meta_model.predict(X_tfidf)[0])
     if not results:
         results["Error"] = "No model loaded."
     return results
