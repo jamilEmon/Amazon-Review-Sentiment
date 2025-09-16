@@ -13,3 +13,4 @@ matplotlib>=3.10.6
 seaborn>=0.13.2
 beautifulsoup4>=4.13.5
 requests>=2.32.4
+lightgbm>=4.6.0
