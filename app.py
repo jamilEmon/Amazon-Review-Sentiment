@@ -19,8 +19,10 @@ def predict():
     except Exception as e:
         import traceback
         traceback.print_exc()
-        return f"Prediction failed: {e}", 500
+        # Return a friendly error message for users
+        return render_template("result.html", text=text, prediction={"Error": str(e)}), 500
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))  # Render sets $PORT automatically
-    app.run(host="0.0.0.0", port=port)        # remove debug=True in production
+    # Bind to all interfaces
+    app.run(host="0.0.0.0", port=port)
